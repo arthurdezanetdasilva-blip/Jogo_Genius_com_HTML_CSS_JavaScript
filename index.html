@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogo Genius</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topo">
+    <h1>Jogo <span>Genius</span></h1>
+    <button id="start">▶ Iniciar Jogo</button>
+</header>
+
+<main class="container">
+
+    <!-- LADO ESQUERDO -->
+    <section class="left">
+
+        <div class="board">
+
+            <div class="btn green" data-color="0"></div>
+            <div class="btn red" data-color="1"></div>
+            <div class="btn yellow" data-color="2"></div>
+            <div class="btn blue" data-color="3"></div>
+
+            <div class="center">GENIUS</div>
+
+        </div>
+
+        <div class="info" id="msg">
+            Clique em iniciar para jogar
+        </div>
+
+    </section>
+
+    <!-- LADO DIREITO -->
+    <section class="right">
+
+        <div class="card">
+            <h2>PLACAR</h2>
+            <p>Rodada: <span id="round">0</span></p>
+            <p>Recorde: <span id="best">0</span></p>
+        </div>
+
+        <div class="card">
+            <h2>COMO JOGAR</h2>
+            <p>Observe a sequência</p>
+            <p>Repita clicando nas cores</p>
+            <p>A cada rodada aumenta</p>
+            <p>Errou = Game Over</p>
+        </div>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
