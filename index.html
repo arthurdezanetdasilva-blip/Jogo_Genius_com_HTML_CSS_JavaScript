@@ -9,50 +9,65 @@
 <body>
 
 <header class="topo">
-    <h1>Jogo <span>Genius</span></h1>
-    <button id="start">▶ Iniciar Jogo</button>
+<h1>Jogo <span>Genius</span></h1>
+<button id="start">▶ Iniciar Jogo</button>
 </header>
 
 <main class="container">
 
-    <!-- LADO ESQUERDO -->
-    <section class="left">
+<section class="left">
 
-        <div class="board">
+<div class="board">
 
-            <div class="btn green" data-color="0"></div>
-            <div class="btn red" data-color="1"></div>
-            <div class="btn yellow" data-color="2"></div>
-            <div class="btn blue" data-color="3"></div>
+<div class="btn green"></div>
+<div class="btn red"></div>
+<div class="btn yellow"></div>
+<div class="btn blue"></div>
 
-            <div class="center">GENIUS</div>
+<div class="center">GENIUS</div>
 
-        </div>
+</div>
 
-        <div class="info" id="msg">
-            Clique em iniciar para jogar
-        </div>
+<div class="info" id="msg">
+Clique em iniciar para jogar
+</div>
 
-    </section>
+</section>
 
-    <!-- LADO DIREITO -->
-    <section class="right">
+<section class="right">
 
-        <div class="card">
-            <h2>PLACAR</h2>
-            <p>Rodada: <span id="round">0</span></p>
-            <p>Recorde: <span id="best">0</span></p>
-        </div>
+<div class="card">
+<h2>PLACAR</h2>
+<p>Rodada: <span id="round">0</span></p>
+<p>Recorde: <span id="best">0</span></p>
+</div>
 
-        <div class="card">
-            <h2>COMO JOGAR</h2>
-            <p>Observe a sequência</p>
-            <p>Repita clicando nas cores</p>
-            <p>A cada rodada aumenta</p>
-            <p>Errou = Game Over</p>
-        </div>
+<div class="card">
+<h2>🏆 RANKING</h2>
 
-    </section>
+<div id="ranking">
+<p>1º ---</p>
+<p>2º ---</p>
+<p>3º ---</p>
+<p>4º ---</p>
+<p>5º ---</p>
+</div>
+
+<button id="resetRank" class="btn-rank">
+🗑 Limpar Ranking
+</button>
+
+</div>
+
+<div class="card">
+<h2>COMO JOGAR</h2>
+<p>Observe a sequência</p>
+<p>Repita clicando nas cores</p>
+<p>A cada rodada aumenta</p>
+<p>Errou = Game Over</p>
+</div>
+
+</section>
 
 </main>
 

@@ -9,6 +9,7 @@
     background:linear-gradient(135deg,#020617,#071a52,#1e1b4b);
     color:white;
     min-height:100vh;
+    overflow-x:hidden;
     }
     
     /* TOPO */
@@ -22,6 +23,7 @@
     
     .topo h1{
     font-size:38px;
+    font-weight:bold;
     }
     
     .topo h1 span{
@@ -36,12 +38,12 @@
     border-radius:14px;
     font-size:18px;
     cursor:pointer;
-    box-shadow:0 0 20px rgba(59,130,246,.4);
+    font-weight:bold;
     transition:.3s;
     }
     
     .topo button:hover{
-    transform:translateY(-2px) scale(1.02);
+    transform:scale(1.05);
     }
     
     /* LAYOUT */
@@ -51,12 +53,13 @@
     align-items:flex-start;
     padding:40px;
     gap:40px;
+    flex-wrap:wrap;
     }
     
     /* TABULEIRO */
     .board{
-    width:540px;
-    height:540px;
+    width:520px;
+    height:520px;
     background:#111827;
     border-radius:50%;
     padding:18px;
@@ -64,9 +67,7 @@
     grid-template-columns:1fr 1fr;
     gap:14px;
     position:relative;
-    box-shadow:
-    0 0 40px rgba(0,0,0,.6),
-    inset 0 0 25px rgba(255,255,255,.04);
+    box-shadow:0 0 35px rgba(0,0,0,.5);
     }
     
     .btn{
@@ -75,12 +76,12 @@
     }
     
     .btn:hover{
-    transform:scale(1.02);
+    transform:scale(1.03);
     }
     
     .btn.active{
     filter:brightness(1.7);
-    box-shadow:0 0 30px white;
+    box-shadow:0 0 25px white;
     }
     
     .green{
@@ -103,20 +104,16 @@
     border-radius:20px 20px 100% 20px;
     }
     
-    /* CENTRO */
     .center{
     position:absolute;
     inset:34%;
     border-radius:50%;
-    background:radial-gradient(circle,#111827,#030712);
+    background:#0f172a;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:42px;
+    font-size:40px;
     font-weight:bold;
-    box-shadow:
-    0 0 20px rgba(0,0,0,.6),
-    inset 0 0 20px rgba(255,255,255,.04);
     }
     
     /* LATERAL */
@@ -128,28 +125,53 @@
     }
     
     .card{
-    background:rgba(15,23,42,.85);
+    background:#111827;
     padding:25px;
     border-radius:22px;
-    border:1px solid rgba(255,255,255,.06);
-    box-shadow:0 10px 25px rgba(0,0,0,.35);
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
     }
     
     .card h2{
-    margin-bottom:18px;
     font-size:28px;
+    margin-bottom:18px;
     }
     
     .card p{
-    margin:12px 0;
-    font-size:22px;
+    font-size:20px;
+    margin:10px 0;
     color:#dbeafe;
     }
     
     .card span{
-    color:#3b82f6;
-    font-size:32px;
+    color:#38bdf8;
+    font-size:28px;
     font-weight:bold;
+    }
+    
+    #ranking p{
+    background:rgba(255,255,255,.03);
+    padding:8px 12px;
+    border-radius:12px;
+    font-size:18px;
+    }
+    
+    /* BOTÃO RANK */
+    .btn-rank{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(45deg,#ef4444,#dc2626);
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+    }
+    
+    .btn-rank:hover{
+    transform:scale(1.03);
     }
     
     /* MENSAGEM */
@@ -161,7 +183,6 @@
     text-align:center;
     font-size:22px;
     font-weight:bold;
-    box-shadow:0 0 25px rgba(124,58,237,.35);
     }
     
     /* RESPONSIVO */
@@ -178,8 +199,8 @@
     }
     
     .board{
-    width:400px;
-    height:400px;
+    width:420px;
+    height:420px;
     }
     
     .center{
@@ -203,7 +224,7 @@
     }
     
     .center{
-    font-size:22px;
+    font-size:20px;
     }
     
     .card p{
@@ -214,32 +235,4 @@
     font-size:18px;
     }
     
-    }
-    
-    /* ANIMAÇÕES */
-    @keyframes abrirGameOver{
-    from{
-    opacity:0;
-    transform:scale(.7) rotate(-8deg);
-    }
-    to{
-    opacity:1;
-    transform:scale(1) rotate(0);
-    }
-    }
-    
-    @keyframes sumirTela{
-    to{
-    opacity:0;
-    transform:scale(1.1);
-    }
-    }
-    
-    @keyframes tremer{
-    0%{transform:translateX(0);}
-    20%{transform:translateX(-6px);}
-    40%{transform:translateX(6px);}
-    60%{transform:translateX(-4px);}
-    80%{transform:translateX(4px);}
-    100%{transform:translateX(0);}
     }
