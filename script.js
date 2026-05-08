@@ -1,5 +1,6 @@
 const botoes = document.querySelectorAll(".btn");
 const iniciar = document.getElementById("start");
+const modo = document.getElementById("modo");
 const mensagem = document.getElementById("msg");
 const rodadaTxt = document.getElementById("round");
 const bestTxt = document.getElementById("best");
@@ -21,46 +22,50 @@ bestTxt.innerHTML = recorde;
 let audioCtx = null;
 
 function ativarSom(){
+
 if(!audioCtx){
 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 }
+
 if(audioCtx.state === "suspended"){
 audioCtx.resume();
 }
+
 }
 
-function tocar(freq, tempo=0.22){
+function tocar(freq,tempo=0.20){
 
 if(!audioCtx) return;
 
 const osc = audioCtx.createOscillator();
 const gain = audioCtx.createGain();
 
-osc.type = "square";
-osc.frequency.value = freq;
+osc.type="square";
+osc.frequency.value=freq;
 
 osc.connect(gain);
 gain.connect(audioCtx.destination);
 
 gain.gain.setValueAtTime(0.22,audioCtx.currentTime);
+
 gain.gain.exponentialRampToValueAtTime(
 0.001,
-audioCtx.currentTime + tempo
+audioCtx.currentTime+tempo
 );
 
 osc.start();
-osc.stop(audioCtx.currentTime + tempo);
+osc.stop(audioCtx.currentTime+tempo);
 
 }
 
 function somCor(i){
-const notas = [329,261,220,164];
+const notas=[329,261,220,164];
 tocar(notas[i]);
 }
 
 function somErro(){
-tocar(180,0.18);
-setTimeout(()=>{ tocar(120,0.30); },180);
+tocar(180,0.15);
+setTimeout(()=>{ tocar(120,0.28); },180);
 }
 
 /* RANKING */
@@ -113,7 +118,7 @@ nome:nome,
 pontos:pontos
 });
 
-ranking.sort((a,b)=> b.pontos - a.pontos);
+ranking.sort((a,b)=> b.pontos-a.pontos);
 
 ranking = ranking.slice(0,5);
 
@@ -126,32 +131,26 @@ mostrarRanking();
 
 }
 
-/* RESETAR RANK */
 resetRank.onclick = ()=>{
 
-let confirmar = confirm("Deseja apagar ranking?");
-
-if(confirmar){
+if(confirm("Deseja apagar ranking?")){
 
 ranking = [];
-
 localStorage.removeItem("rankingGenius");
-
 mostrarRanking();
-
-alert("Ranking apagado!");
 
 }
 
 };
 
-/* DIFICULDADE */
+/* MODOS */
 function velocidade(){
 
-if(rodada < 5) return 700;
-if(rodada < 10) return 550;
-if(rodada < 15) return 430;
-return 280;
+if(modo.value=="facil") return 850;
+if(modo.value=="medio") return 550;
+if(modo.value=="dificil") return 300;
+
+return 550;
 
 }
 
@@ -163,8 +162,10 @@ if(bloqueado) return;
 ativarSom();
 
 iniciar.disabled = true;
+modo.disabled = true;
 
 sequencia = [];
+jogador = [];
 rodada = 0;
 
 proximaRodada();
@@ -179,9 +180,7 @@ rodada++;
 
 rodadaTxt.innerHTML = rodada;
 
-const cor = Math.floor(Math.random()*4);
-
-sequencia.push(cor);
+sequencia.push(Math.floor(Math.random()*4));
 
 mensagem.innerHTML = "Observe a sequência...";
 
@@ -209,7 +208,6 @@ setTimeout(()=>{
 
 jogando = true;
 bloqueado = false;
-
 mensagem.innerHTML = "Sua vez!";
 
 },sequencia.length*tempo+250);
@@ -227,7 +225,7 @@ somCor(i);
 
 setTimeout(()=>{
 botao.classList.remove("active");
-},230);
+},220);
 
 }
 
@@ -270,34 +268,32 @@ proximaRodada();
 
 }
 
-/* GAME OVER */
+/* DERROTA */
 function derrota(){
-
-jogando = false;
-bloqueado = true;
 
 somErro();
 
-if(rodada > recorde){
+salvarRanking(rodada);
 
+if(rodada > recorde){
 recorde = rodada;
 localStorage.setItem("recorde",recorde);
 bestTxt.innerHTML = recorde;
-
 }
-
-salvarRanking(rodada);
 
 alert("GAME OVER");
 
 iniciar.disabled = false;
+modo.disabled = false;
 
 sequencia = [];
+jogador = [];
 rodada = 0;
 
 rodadaTxt.innerHTML = 0;
 mensagem.innerHTML = "Clique em iniciar para jogar";
 
 bloqueado = false;
+jogando = false;
 
 }
